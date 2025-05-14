@@ -1,0 +1,120 @@
+.footer {
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 24px;
+  color: #333;
+  margin-top: 500px;
+}
+
+/* Banner azul superior */
+.footer-banner {
+  background-color: #103b67;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-radius: 10px;
+  margin: 0 32px 32px;
+}
+
+.footer-banner h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.footer-banner p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #d1e3f0;
+}
+
+.banner-button {
+  background-color: white;
+  color: #103b67;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Contenedor del contenido principal */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0 32px 24px;
+  gap: 32px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #007bff;
+}
+
+/* Logo y descripción */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0c4a6e;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.location {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Redes sociales */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Copyright */
+.footer p.copyright {
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  padding: 16px 0;
+  border-top: 1px solid #eee;
+}
