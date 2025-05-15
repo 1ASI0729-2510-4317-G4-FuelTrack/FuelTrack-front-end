@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent {
   isClient = true;
   email = '';
