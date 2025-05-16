@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderWizardComponent } from './order-wizard/order-wizard.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -21,7 +22,9 @@ import { OrderWizardComponent } from './order-wizard/order-wizard.component';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatBadgeModule,],
+    MatBadgeModule,
+    RouterLink,
+  ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })
