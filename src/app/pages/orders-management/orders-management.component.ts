@@ -7,12 +7,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatDialog } from '@angular/material/dialog';
-import { OrderWizardComponent } from './order-wizard/order-wizard.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-orders',
+  selector: 'app-orders-management',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,12 +21,14 @@ import { RouterLink } from '@angular/router';
     MatIconModule,
     MatListModule,
     MatBadgeModule,
-    RouterLink,
+    RouterModule,
   ],
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.css',
+  templateUrl: './orders-management.component.html',
+  styleUrl: './orders-management.component.css',
 })
-export class OrdersComponent {
+export class OrdersManagementComponent {
+  constructor(private router: Router) {}
+
   displayedColumns: string[] = [
     'expand',
     'created',
@@ -36,21 +36,32 @@ export class OrdersComponent {
     'amount',
     'terminal',
     'id',
-    'status',
   ];
+  navItems = [
+    { label: 'Admin', icon: 'admin_panel_settings', route: '/admin' },
+    {
+      label: 'Orders Management',
+      icon: 'inventory_2',
+      route: '/orders-management',
+    },
+    { label: 'Conciliations', icon: 'local_shipping', route: '/conciliations' },
+    { label: 'Dispatch', icon: 'local_shipping', route: '/dispatch' },
+    { label: 'Analytics', icon: 'analytics', route: '/analytics' },
+    { label: 'Notifications', icon: 'notifications', route: '/notifications' },
+    { label: 'Prices', icon: 'attach_money', route: '/prices' },
+    { label: 'Clients', icon: 'people', route: '/clients' },
+    { label: 'Contact us', icon: 'mail', route: '/contact' },
+  ];
+  isActive(route: string): boolean {
+    return this.router.url === route;
+  }
   expandedElement: any | null = null;
+  isExpandedRow(index: number, row: any): boolean {
+    return this.expandedElement === row;
+  }
   toggleRow(row: any) {
     this.expandedElement = this.expandedElement?.id === row.id ? null : row;
   }
-  constructor(private dialog: MatDialog) {}
-
-  openOrderWizard(): void {
-    this.dialog.open(OrderWizardComponent, {
-      width: '800px',
-      panelClass: 'custom-dialog-container',
-    });
-  }
-
   orders = [
     {
       created: '4 APR, 2025',
