@@ -7,6 +7,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderWizardComponent } from './order-wizard/order-wizard.component';
 
 @Component({
   selector: 'app-orders',
@@ -19,7 +21,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatBadgeModule],
+    MatBadgeModule,],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })
@@ -29,6 +31,15 @@ export class OrdersComponent {
   toggleRow(row: any) {
     this.expandedElement = this.expandedElement?.id === row.id ? null : row;
   }
+  constructor(private dialog: MatDialog) {}
+
+  openOrderWizard(): void {
+    this.dialog.open(OrderWizardComponent, {
+      width: '800px',
+      panelClass: 'custom-dialog-container'
+    });
+  }
+
   orders = [
     { created: '4 APR, 2025', user: 'Sebastian Rosas', amount: 'S/ 4000.00', terminal: 'Callao', id: 'O_d1hfg...', status: 'Requested' },
     { created: '4 APR, 2025', user: 'Sebastian Rosas', amount: 'S/ 4000.00', terminal: 'Pisco', id: 'O_d2hfg...', status: 'Approved' },
