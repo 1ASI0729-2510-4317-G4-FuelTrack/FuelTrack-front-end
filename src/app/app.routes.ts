@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { OrdersComponent } from './pages/orders/orders.component';
-import { AnalyticsComponent } from './pages/analytics/analytics.component';
+import { HomeComponent } from './shared/presentation/pages/home/home.component';
+import { LoginComponent } from './auth-pages/presentation/pages/login/login.component';
+import { RegisterComponent } from './auth-pages/presentation/pages/register/register.component';
+import { OrdersComponent } from './control/presentation/pages/orders/orders.component';
+import { AnalyticsComponent } from './analytics/presentation/pages/analytics/analytics.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
-import { OrdersManagementComponent } from './pages/orders-management/orders-management.component';
+import { OrdersManagementComponent } from './analytics/presentation/pages/orders-management/orders-management.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
