@@ -6,6 +6,7 @@ import { OrdersComponent } from './control/presentation/pages/orders/orders.comp
 import { AnalyticsComponent } from './analytics/presentation/pages/analytics/analytics.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { OrdersManagementComponent } from './analytics/presentation/pages/orders-management/orders-management.component';
+import { DispatchComponent } from './analytics/presentation/pages/dispatch/dispatch.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
     ],
   },
   { path: 'orders-management', component: OrdersManagementComponent },
+  { path: 'dispatch', component: DispatchComponent },
 ];
