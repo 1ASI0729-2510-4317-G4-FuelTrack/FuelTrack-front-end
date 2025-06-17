@@ -1,0 +1,38 @@
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 30px;
+  padding-left: 20px;
+  border-left: 3px solid #4b6cb7;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.circle {
+  position: absolute;
+  left: -31px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: #4b6cb7;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #4b6cb7;
+}
+
+.content h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.2rem;
+}
+
+.content p {
+  margin: 0;
+  color: #555;
+}

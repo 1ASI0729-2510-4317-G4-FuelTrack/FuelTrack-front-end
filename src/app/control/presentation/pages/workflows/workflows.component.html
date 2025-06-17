@@ -1,0 +1,11 @@
+<h2 class="section-title">Operational Workflows</h2>
+
+<div class="timeline">
+  <div class="timeline-item" *ngFor="let step of steps">
+    <div class="circle"></div>
+    <div class="content">
+      <h3>{{ step.title }}</h3>
+      <p>{{ step.description }}</p>
+    </div>
+  </div>
+</div>

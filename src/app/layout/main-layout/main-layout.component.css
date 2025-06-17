@@ -16,3 +16,11 @@
 .content {
   padding: 24px;
 }
+
+mat-nav-list a.mat-list-item mat-icon {
+  margin-right: 12px;
+}
+
+.nav-label {
+  font-size: 14px;
+}
