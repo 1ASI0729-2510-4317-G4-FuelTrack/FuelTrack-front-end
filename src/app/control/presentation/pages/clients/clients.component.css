@@ -1,0 +1,120 @@
+/* --- contenedor general --- */
+.sidenav-container {
+  height: 100vh;
+  background: #1F2A46;
+}
+
+/* --- Sidenav --- */
+.sidenav {
+  width: 240px;
+  background: #0E1B37;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.logo-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.nav-item {
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-icon {
+  color: #fff !important;
+  margin-right: 0.75rem;
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.mdc-list {
+  padding: 0rem 0.25rem;
+}
+
+.nav-label {
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 10px !important;
+}
+
+.nav-item {
+  background: #1E3A5F;
+  border-radius: 0.25rem !important;
+  margin-bottom: 0.25rem;
+}
+
+.nav-item.active {
+  background: #27AE60;
+  border-radius: 0.25rem;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Contenido principal --- */
+.main-content {
+  padding: 1.5rem;
+  color: #fff;
+}
+
+/* Header + título */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-block h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.title-block p {
+  margin: 0;
+  color: #AAB2E1;
+}
+
+/* --- Cards de clientes --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.client-card {
+  background: #22314b;
+  color: white;
+  border-radius: 8px;
+}
+
+.status-active {
+  color: #22c55e;
+}
+
+.status-inactive {
+  color: #f87171;
+}
+
+mat-card-title {
+  font-weight: bold;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}

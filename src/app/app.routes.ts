@@ -13,6 +13,9 @@ import {NotificationsComponent} from './control/presentation/pages/notifications
 import {ProvidersComponent} from './control/presentation/pages/providers/providers.component';
 import {WorkflowsComponent} from './control/presentation/pages/workflows/workflows.component';
 import {ContactUsComponent} from './control/presentation/pages/contact-us/contact-us.component';
+import {ConciliationsComponent} from './control/presentation/pages/conciliations/conciliations.component';
+import {PricesComponent} from './control/presentation/pages/prices/prices.component';
+import {ClientsComponent} from './control/presentation/pages/clients/clients.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,5 +37,8 @@ export const routes: Routes = [
     ],
   },
   { path: 'orders-management', component: OrdersManagementComponent },
+  { path: 'conciliations', component: ConciliationsComponent },
   { path: 'dispatch', component: DispatchComponent },
+  { path: 'prices', component: PricesComponent},
+  { path: 'clients', component: ClientsComponent}
 ];

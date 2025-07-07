@@ -46,7 +46,6 @@ export class OrdersManagementComponent {
     },
     { label: 'Conciliations', icon: 'local_shipping', route: '/conciliations' },
     { label: 'Dispatch', icon: 'local_shipping', route: '/dispatch' },
-    { label: 'Analytics', icon: 'analytics', route: '/analytics' },
     { label: 'Notifications', icon: 'notifications', route: '/notifications' },
     { label: 'Prices', icon: 'attach_money', route: '/prices' },
     { label: 'Clients', icon: 'people', route: '/clients' },
