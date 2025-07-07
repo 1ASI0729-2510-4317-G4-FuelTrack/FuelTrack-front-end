@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,8 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialog } from '@angular/material/dialog';
-import { OrderWizardComponent } from './order-wizard/order-wizard.component';
 import { RouterLink } from '@angular/router';
+
+import { OrderService} from '../../../../services/order.service';
+
+import { OrderWizardComponent } from './order-wizard/order-wizard.component';
 
 @Component({
   selector: 'app-orders',
@@ -28,7 +31,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css',
 })
-export class OrdersComponent {
+export class OrdersComponent implements OnInit {
   displayedColumns: string[] = [
     'expand',
     'created',
@@ -38,11 +41,30 @@ export class OrdersComponent {
     'id',
     'status',
   ];
+
+  orders: any[] = [];
   expandedElement: any | null = null;
+
+  constructor(
+    private dialog: MatDialog,
+    private orderService: OrderService
+  ) {}
+
+  ngOnInit(): void {
+    this.orderService.getAllOrders().subscribe({
+      next: (data) => {
+        this.orders = data;
+        console.log('Órdenes recibidas:', data);
+      },
+      error: (err) => {
+        console.error('Error al obtener órdenes:', err);
+      }
+    });
+  }
+
   toggleRow(row: any) {
     this.expandedElement = this.expandedElement?.id === row.id ? null : row;
   }
-  constructor(private dialog: MatDialog) {}
 
   openOrderWizard(): void {
     this.dialog.open(OrderWizardComponent, {
@@ -50,95 +72,4 @@ export class OrdersComponent {
       panelClass: 'custom-dialog-container',
     });
   }
-
-  orders = [
-    {
-      created: '4 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Callao',
-      id: 'O_d1hfg...',
-      status: 'Requested',
-    },
-    {
-      created: '4 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Pisco',
-      id: 'O_d2hfg...',
-      status: 'Approved',
-    },
-    {
-      created: '12 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Valero',
-      id: 'O_d3hfg...',
-      status: 'Released',
-    },
-    {
-      created: '12 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Valero',
-      id: 'O_d4hfg...',
-      status: 'Approved',
-    },
-    {
-      created: '18 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Pisco',
-      id: 'O_d5hfg...',
-      status: 'Requested',
-    },
-    {
-      created: '18 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Lurin',
-      id: 'O_d6hfg...',
-      status: 'Released',
-    },
-    {
-      created: '22 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Pisco',
-      id: 'O_d7hfg...',
-      status: 'Approved',
-    },
-    {
-      created: '23 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Lurin',
-      id: 'O_d8hfg...',
-      status: 'Closed',
-    },
-    {
-      created: '28 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Pisco',
-      id: 'O_d9hfg...',
-      status: 'Approved',
-    },
-    {
-      created: '28 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Lurin',
-      id: 'O_d10hfg...',
-      status: 'Closed',
-    },
-    {
-      created: '30 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Pisco',
-      id: 'O_d11hfg...',
-      status: 'Closed',
-    },
-  ];
 }

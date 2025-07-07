@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { Router, RouterModule } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
+import { OrderService} from '../../../../services/order.service';
 
 @Component({
   selector: 'app-dispatch',
@@ -29,9 +30,7 @@ import { SelectionModel } from '@angular/cdk/collections';
   templateUrl: './dispatch.component.html',
   styleUrl: './dispatch.component.css',
 })
-export class DispatchComponent {
-  constructor(private router: Router) {}
-
+export class DispatchComponent implements OnInit {
   displayedColumns: string[] = [
     'select',
     'created',
@@ -41,14 +40,12 @@ export class DispatchComponent {
     'release',
     'id',
   ];
+
+  orders: any[] = [];
   selection = new SelectionModel<any>(true, []);
   navItems = [
     { label: 'Admin', icon: 'admin_panel_settings', route: '/admin' },
-    {
-      label: 'Orders Management',
-      icon: 'inventory_2',
-      route: '/orders-management',
-    },
+    { label: 'Orders Management', icon: 'inventory_2', route: '/orders-management' },
     { label: 'Conciliations', icon: 'local_shipping', route: '/conciliations' },
     { label: 'Dispatch', icon: 'local_shipping', route: '/dispatch' },
     { label: 'Notifications', icon: 'notifications', route: '/notifications' },
@@ -56,9 +53,25 @@ export class DispatchComponent {
     { label: 'Clients', icon: 'people', route: '/clients' },
     { label: 'Contact us', icon: 'mail', route: '/contact' },
   ];
+
+  constructor(private router: Router, private orderService: OrderService) {}
+
+  ngOnInit(): void {
+    this.orderService.getAllOrders().subscribe({
+      next: (data) => {
+        this.orders = data;
+        console.log('Órdenes recibidas (Dispatch):', data);
+      },
+      error: (err) => {
+        console.error('Error al obtener órdenes en Dispatch:', err);
+      }
+    });
+  }
+
   isActive(route: string): boolean {
     return this.router.url === route;
   }
+
   isAllSelected(): boolean {
     return this.selection.selected.length === this.orders.length;
   }
@@ -72,38 +85,4 @@ export class DispatchComponent {
   toggleOne(row: any): void {
     this.selection.toggle(row);
   }
-  orders = [
-    {
-      id: 1,
-      created: '4 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Callao',
-      release: '',
-    },
-    {
-      id: 2,
-      created: '4 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Pisco',
-      release: '',
-    },
-    {
-      id: 3,
-      created: '12 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Valero',
-      release: '',
-    },
-    {
-      id: 4,
-      created: '12 APR, 2025',
-      user: 'Sebastian Rosas',
-      amount: 'S/ 4000.00',
-      terminal: 'Valero',
-      release: '',
-    },
-  ];
 }
