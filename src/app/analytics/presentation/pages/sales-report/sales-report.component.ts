@@ -9,6 +9,8 @@ import { saveAs } from 'file-saver';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-sales-report',
@@ -76,19 +78,19 @@ export class SalesReportComponent {
   }
 
   downloadPDF() {
-    // Solo para demo: PDF simple con window.print
-    // Para PDF real, se recomienda usar jsPDF o similar
-    const win = window.open('', '', 'width=800,height=600');
-    if (win) {
-      win.document.write('<h2>Sales Report</h2>');
-      win.document.write('<table border="1" style="border-collapse:collapse;">');
-      win.document.write('<tr><th>Month</th><th>Sales</th></tr>');
-      this.barChartData.labels.forEach((label: string, i: number) => {
-        win.document.write(`<tr><td>${label}</td><td>${this.barChartData.datasets[0].data[i]}</td></tr>`);
-      });
-      win.document.write('</table>');
-      win.document.close();
-      win.print();
-    }
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Resumen de Ventas Mensuales', 14, 18);
+    doc.setFontSize(10);
+    doc.text('Fecha: ' + new Date().toLocaleString(), 14, 25);
+    (doc as any).autoTable({
+      head: [['Mes', 'Ventas (USD)']],
+      body: this.barChartData.labels.map((label: string, i: number) => [label, this.barChartData.datasets[0].data[i]]),
+      startY: 30,
+      theme: 'grid',
+      headStyles: { fillColor: [34, 49, 75] },
+      styles: { fontSize: 10 }
+    });
+    doc.save('reporte-ventas.pdf');
   }
 }

@@ -6,6 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { Router, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-clients',
@@ -46,4 +48,21 @@ export class ClientsComponent {
     { name: 'Combustibles Rojas', ruc: '20456789123', status: 'Inactive' },
     { name: 'Gasolinera Lima Sur', ruc: '20876543210', status: 'Active' },
   ];
+
+  downloadClientsPDF() {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Resumen de Clientes', 14, 18);
+    doc.setFontSize(10);
+    doc.text('Fecha: ' + new Date().toLocaleString(), 14, 25);
+    (doc as any).autoTable({
+      head: [['Nombre', 'RUC', 'Estado']],
+      body: this.clients.map(c => [c.name, c.ruc, c.status]),
+      startY: 30,
+      theme: 'grid',
+      headStyles: { fillColor: [34, 49, 75] },
+      styles: { fontSize: 10 }
+    });
+    doc.save('resumen-clientes.pdf');
+  }
 }
