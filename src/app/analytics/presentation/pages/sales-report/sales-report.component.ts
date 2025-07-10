@@ -1,34 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatBadgeModule } from '@angular/material/badge';
 import { Router, RouterModule } from '@angular/router';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
-  selector: 'app-conciliations',
+  selector: 'app-sales-report',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatTableModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatListModule,
-    MatBadgeModule,
-    MatCheckboxModule,
-    RouterModule,
-  ],
-  templateUrl: './conciliations.component.html',
-  styleUrl: './conciliations.component.css'
+  imports: [CommonModule, MatSidenavModule, MatIconModule, MatListModule, RouterModule, BaseChartDirective],
+  templateUrl: './sales-report.component.html',
+  styleUrl: './sales-report.component.css'
 })
-export class ConciliationsComponent {
+export class SalesReportComponent {
   constructor(public router: Router) {}
 
   navItems = [
@@ -47,10 +32,20 @@ export class ConciliationsComponent {
     return this.router.url === route;
   }
 
-  displayedColumns: string[] = ['select', 'order', 'date', 'status', 'action'];
-  dataSource = [
-    { order: 'ORD-0012', date: '4 APR, 2025', status: 'Pending' },
-    { order: 'ORD-0013', date: '5 APR, 2025', status: 'With observations' },
-    { order: 'ORD-0014', date: '6 APR, 2025', status: 'Conciliated' },
-  ];
+  public barChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: 'Monthly Sales (USD)' }
+    }
+  };
+  public barChartData = {
+    labels: [
+      'January', 'February', 'March', 'April', 'May', 'June', 'July',
+      'August', 'September', 'October', 'November', 'December'
+    ],
+    datasets: [
+      { data: [12000, 15000, 18000, 14000, 20000, 22000, 21000, 19000, 23000, 25000, 24000, 26000], label: 'Sales' }
+    ]
+  };
 }

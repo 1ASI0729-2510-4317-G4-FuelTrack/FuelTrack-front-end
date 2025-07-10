@@ -30,6 +30,7 @@ export class ClientsComponent {
     { label: 'Orders Management', icon: 'inventory_2', route: '/orders-management' },
     { label: 'Conciliations', icon: 'local_shipping', route: '/conciliations' },
     { label: 'Dispatch', icon: 'local_shipping', route: '/dispatch' },
+    { label: 'Sales Report', icon: 'bar_chart', route: '/sales-report' },
     { label: 'Notifications', icon: 'notifications', route: '/notifications' },
     { label: 'Prices', icon: 'attach_money', route: '/prices' },
     { label: 'Clients', icon: 'people', route: '/clients' },

@@ -16,6 +16,7 @@ import {ContactUsComponent} from './control/presentation/pages/contact-us/contac
 import {ConciliationsComponent} from './control/presentation/pages/conciliations/conciliations.component';
 import {PricesComponent} from './control/presentation/pages/prices/prices.component';
 import {ClientsComponent} from './control/presentation/pages/clients/clients.component';
+import { SalesReportComponent } from './analytics/presentation/pages/sales-report/sales-report.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,5 +41,6 @@ export const routes: Routes = [
   { path: 'conciliations', component: ConciliationsComponent },
   { path: 'dispatch', component: DispatchComponent },
   { path: 'prices', component: PricesComponent},
-  { path: 'clients', component: ClientsComponent}
+  { path: 'clients', component: ClientsComponent},
+  { path: 'sales-report', component: SalesReportComponent },
 ];
